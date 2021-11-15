@@ -1,0 +1,41 @@
+A={x="1"
+   y="2"}
+B={y="2"}
+array=["1"
+       "2"
+       "3"
+       "0x27"
+       "010"]
+ert="17"
+f=["1"]
+file="blah blah `file` here's \\`'s"
+foo=["3"]
+ggg={gotincluded=["1"
+                  "2"
+                  "3"]
+     rrr=["5"
+          {jj="183"}
+          "xxx"]}
+jgak="123"
+nothing=["1"
+         ?
+         "4"]
+t={e="4"
+   multi={gotincluded=["1"
+                       "2"
+                       "3"]
+          ijkl="abcd"
+          record="here"}}
+x=[{tau=["1"
+         "2"]}
+   {tau=["23"
+         {hey="there"}
+         "56"]}]
+y=[{myarray=["3"
+             "4"
+             "5"]}
+   "yuiop"
+   "qwerty"
+   "added"
+   "added again"]
+z="5"

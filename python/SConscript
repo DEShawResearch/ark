@@ -1,0 +1,8 @@
+Import('env')
+
+env=env.Clone()
+env.Append(LIBS=['ark_static'])
+env.Append(CXXFLAGS='-O2 -g -Wall -Werror -std=c++11')
+
+env.AddPythonModule('__init__.py',        prefix='ark')
+env.AddPythonExtension('_ark', 'ark.cpp', prefix='ark')

@@ -1,0 +1,4 @@
+
+Release Notes:
+
+1.4.12 - First public release on DESRES github.

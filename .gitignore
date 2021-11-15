@@ -1,0 +1,8 @@
+*~
+*.[oa]
+/.sconsign.dblite
+/build
+.pytest_cache
+.cache
+doc/build
+.coverage

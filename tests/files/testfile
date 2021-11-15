@@ -1,0 +1,47 @@
+z= 5
+x= [2 3 4 5]
+y= [ { myarray= [3 4 5]  } yuiop qwerty]
+t= {e=4 multi= {record= `here` !include includeme
+ ijkl= abcd}}
+
+y[+] = added
+y[+] = "added again"
+y[+] = "
+"
+y[+] = "\\"
+
+x= [{tau= [1 2]} {tau= [23 {hey= 'there'} 56]}]
+
+jgak
+
+=123
+
+file =`blah blah \`file\` here's \\\`'s`
+
+ggg . !include includeme
+
+nothing =[.1 ? 0.4]
+
+array =[ 1 2 3 {} ]
+array[3]=  0x27
+array[4]=  010
+f= [1]
+ggg.rrr[0]= 5
+ggg.rrr[1]= `xx`
+ggg.rrr[2]= xxx
+ggg.rrr[1].jj ="183"
+
+foo ={ bar =1 }
+foo.bar =2
+foo =1
+
+foo[0] =3
+ert=17
+
+A={ x=1 }
+A { y=2 }
+B={ x=1 }
+B={ y=2 }
+
+
+True = true

@@ -1,0 +1,10 @@
+
+
+
+
+
+gotincluded = [1 2 3]
+
+testing_file_form1 = !file "ark/parser.cpp"
+testing_file_form2 = !file "/parser.cpp"
+testing_file_form3 = !file ""

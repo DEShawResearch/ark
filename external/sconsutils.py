@@ -9,6 +9,10 @@ import subprocess
 EnsurePythonVersion(3,7)
 EnsureSConsVersion(3,1)
 
+def _pyver(ver):
+    'return proper python version from 37 -> 3.7, 310 -> 3.10'
+    return ver[0] + '.' + ver[1:]
+
 _wheel_targets = dict(platlib=[], purelib=[], data=[], scripts=[])
 
 def shell(*args, **kwds):
@@ -180,7 +184,7 @@ def _AddPythonModule(env, *args, **kwds):
                     cachedir,
                     os.path.splitext(os.path.basename(py))[0],
                     env['PYTHON%s_CACHEEXT' % ver])
-            cachetgt = env.Command(cachefile, mod, 'python%s -m compileall $SOURCE' % '.'.join(ver))
+            cachetgt = env.Command(cachefile, mod, 'python%s -m compileall $SOURCE' % _pyver(ver))
             _Install(env, 'lib/python/%s/%s' % (prefix, cachedir), cachetgt)
         mods.append(mod)
         _wheel_targets['purelib'].append((mod, wheel_prefix))
@@ -231,7 +235,7 @@ def _AddWheel(env, tomlfile, pyver='36'):
 
     # obtain wheel tag using specified python version
     wmod = 'wheel' if pyver.startswith('2') else 'setuptools'
-    exe = 'python%s' % '.'.join(pyver)
+    exe = 'python%s' % _pyver(pyver)
     tag = "cp%s-cp%sm-linux_x86_64" % (pyver, pyver)
 
 
@@ -299,7 +303,7 @@ def generate(env):
     opts.Add("OBJDIR", "build product location", 'build')
     opts.Add("PREFIX", "installation location")
 
-    opts.Add(ListVariable('PYTHONVER', 'python versions', os.getenv('PYTHONVER', ''), ['27', '35', '36', '37', '38', '39']))
+    opts.Add(ListVariable('PYTHONVER', 'python versions', os.getenv('PYTHONVER', ''), ['27', '35', '36', '37', '38', '39', '310']))
     opts.Update(env)
 
     builddir = env.Dir(env['OBJDIR']).srcnode().abspath
@@ -340,8 +344,8 @@ def generate(env):
             env.AddMethod(func, name)
 
     for ver in env['PYTHONVER']:
-        cfg = 'python%s-config' % '.'.join(ver)
-        exe = 'python%s' % '.'.join(ver)
+        cfg = 'python%s-config' % _pyver(ver)
+        exe = 'python%s' % _pyver(ver)
         incs=shell([cfg, '--includes'])
         prefix=shell([cfg, '--prefix'])
         libs=shell([cfg, '--libs'])

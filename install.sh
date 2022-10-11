@@ -14,9 +14,17 @@ if [[ ! -z "${PYBIND11PATH}" ]]; then
     export DESRES_MODULE_CPPFLAGS="-I$PYBIND11PATH/include":$DESRES_MODULE_CPPFLAGS    
 fi
 
+PYTHONVER=37
+
+# If we have homebrew, we're probably on a mac.  Use current defaults for PYTHONVER
+if [[ -e /opt/homebrew/bin/pybind11-config ]]; then
+    export DESRES_MODULE_CPPFLAGS=$(pybind11-config --includes)
+    PYTHONVER=310
+fi
+
 # invoke build
 . version.sh
-scons -j4 install PREFIX=$PREFIX/ PYTHONVER=37 VERSION=$VERSION
+scons -j4 install PREFIX=$PREFIX/ PYTHONVER=$PYTHONVER VERSION=$VERSION
 
 # build documentation
 . version.sh
